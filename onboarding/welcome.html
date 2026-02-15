@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +17,7 @@
             margin: 0;
             overflow: hidden;
         }
+
         .slide {
             display: none;
             flex-direction: column;
@@ -25,11 +27,24 @@
             padding: 40px;
             animation: fadeIn 0.5s ease;
         }
+
         .slide.active {
             display: flex;
         }
-        h1 { font-size: 2.5rem; margin-bottom: 20px; color: #fff; }
-        p { font-size: 1.2rem; line-height: 1.6; color: #bbb; margin-bottom: 30px; }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #bbb;
+            margin-bottom: 30px;
+        }
+
         .btn {
             padding: 12px 24px;
             font-size: 1rem;
@@ -41,13 +56,36 @@
             transition: background 0.3s;
             margin: 10px;
         }
-        .btn-primary { background: #00ff99; color: #000; font-weight: bold; }
-        .btn-primary:hover { background: #00cc7a; }
-        .icon-large { font-size: 4rem; margin-bottom: 20px; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .btn-primary {
+            background: #00ff99;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .btn-primary:hover {
+            background: #00cc7a;
+        }
+
+        .icon-large {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Slide 1: The Promise -->
@@ -78,9 +116,15 @@
             <br>
             When your shared bucket runs low (&lt;15%), the sidebar will <strong>Pulse</strong>.
             <br>
-            <span style="color: #ff0055">Fast Pulse = Critical</span> | <span style="color: #ffcc00">Slow Pulse = Warning</span>
+            <span style="color: #ff0055">Fast Pulse = Critical</span> | <span style="color: #ffcc00">Slow Pulse =
+                Warning</span>
         </p>
         <button class="btn btn-primary" onclick="finish()">Enter the Monitor</button>
+
+        <div style="margin-top: 40px; border-top: 1px solid #333; padding-top: 20px; font-size: 0.9rem; color: #666;">
+            <p>Brought to you by <a href="https://www.appranchstudio.com"
+                    style="color: #00ff99; text-decoration: none;">Appranch Studio</a></p>
+        </div>
     </div>
 
     <script>
@@ -100,4 +144,5 @@
         }
     </script>
 </body>
+
 </html>

@@ -3,7 +3,17 @@
   "displayName": "Antigravity Quota Sentinel",
   "description": "Ultra-secure, local-first LLM quota monitor with live pulse alerts and shared bucket visualization.",
   "version": "1.0.0",
-  "publisher": "solo-dev",
+  "publisher": "AppranchStudio",
+  "author": {
+    "name": "Appranch Studio",
+    "email": "contact@appranchstudio.com",
+    "url": "https://www.appranchstudio.com"
+  },
+  "homepage": "https://www.appranchstudio.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atemyshorts/quota_sentinel.git"
+  },
   "engines": {
     "vscode": "^1.75.0"
   },
