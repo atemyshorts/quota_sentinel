@@ -1,0 +1,88 @@
+{
+  "name": "antigravity-quota-sentinel",
+  "displayName": "Antigravity Quota Sentinel",
+  "description": "Ultra-secure, local-first LLM quota monitor with live pulse alerts and shared bucket visualization.",
+  "version": "1.0.0",
+  "publisher": "solo-dev",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Visualization",
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onView:quota-sentinel-sidebar",
+    "onView:quota-sentinel-sidebar-manager"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "quota-sentinel-container",
+          "title": "Quota Sentinel",
+          "icon": "media/icons/gauge-icon.svg"
+        }
+      ],
+      "secondarySideBar": [
+        {
+          "id": "quota-sentinel-manager-container",
+          "title": "Agent Quota Monitor",
+          "icon": "media/icons/gauge-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "quota-sentinel-container": [
+        {
+          "type": "webview",
+          "id": "quota-sentinel-sidebar",
+          "name": "Live Quota HUD",
+          "visibility": "visible"
+        }
+      ],
+      "quota-sentinel-manager-container": [
+        {
+          "type": "webview",
+          "id": "quota-sentinel-sidebar-manager",
+          "name": "Parallel Agent Load",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Quota Sentinel Settings",
+      "properties": {
+        "quotaSentinel.timezone": {
+          "type": "string",
+          "default": "America/Mexico_City",
+          "description": "Local timezone for quota reset synchronization (e.g., Guanajuato/CST)."
+        },
+        "quotaSentinel.securityLevel": {
+          "type": "string",
+          "enum": [
+            "Fortress",
+            "Standard"
+          ],
+          "default": "Fortress",
+          "description": "Fortress mode disables all external networking except local log parsing."
+        },
+        "quotaSentinel.pulseThreshold": {
+          "type": "number",
+          "default": 15,
+          "description": "Percentage remaining at which the gauge begins to pulse red."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "@types/node": "^16.11.7",
+    "typescript": "^4.9.5"
+  }
+}
