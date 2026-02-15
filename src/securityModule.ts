@@ -30,8 +30,8 @@ export class SecurityModule {
      * Generates a strict Content-Security-Policy string for Webviews.
      * Blocks all external connections (connect-src 'none').
      */
-    public getStrictCSP(nonce: string): string {
-        return `default-src 'none'; style-src ${this._context.extensionUri} 'unsafe-inline'; script-src 'nonce-${nonce}'; connect-src 'none'; img-src ${this._context.extensionUri} data:;`;
+    public static getStrictCSP(extensionUri: vscode.Uri, nonce: string): string {
+        return `default-src 'none'; style-src ${extensionUri} 'unsafe-inline'; script-src 'nonce-${nonce}'; connect-src 'none'; img-src ${extensionUri} data:;`;
     }
 
     /**

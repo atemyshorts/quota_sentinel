@@ -41,24 +41,25 @@
             pulseClass = 'pulsing-warning';
         }
 
-        const gaugeHtml = `
-            <div class="gauge-container ${pulseClass}">
+        // Security Fix: Prevent XSS by building DOM elements instead of raw HTML string for user-controlled data
+        const gaugeContainer = document.createElement('div');
+        gaugeContainer.className = `gauge-container ${pulseClass}`;
+        gaugeContainer.innerHTML = `
                 <svg class="gauge-svg" viewBox="0 0 200 200">
                     <circle class="gauge-bg" cx="100" cy="100" r="${radius}"></circle>
                     <circle class="gauge-fill" cx="100" cy="100" r="${radius}" 
                         style="stroke-dasharray: ${circumference}; stroke-dashoffset: ${offset}; stroke: ${color}"></circle>
-                    <!-- Ghost segment would go here -->
                 </svg>
                 <div class="gauge-text">
                     <span class="percentage">${Math.round(bucket.percentage)}%</span>
-                    <span class="label">${id}</span>
+                    <span class="label"></span>
                 </div>
-            </div>
         `;
+        // Safely set text content for the label
+        gaugeContainer.querySelector('.label').textContent = id;
 
-        const wrapper = document.createElement('div');
-        wrapper.innerHTML = gaugeHtml;
-        container.appendChild(wrapper);
+        container.appendChild(gaugeContainer);
+
     }
 
     // Initialize logic triggers

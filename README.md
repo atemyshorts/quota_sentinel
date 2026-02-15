@@ -27,6 +27,20 @@
 We believe in transparency. You can audit the source code of the running extension at any time by running the command:
 `> Antigravity Quota Sentinel: Audit Source Code`
 
+## 🛡️ Security Log
+
+Transparancy is key to trust. Below is a log of security audits and applied fixes.
+
+### Audit: 2026-02-15 (v1.0.1)
+**Auditor**: Antigravity Security Auditor
+**Status**: All Findings Resolved.
+
+*   **[FIXED] Potential DoS in Log Reader**: Capped log read buffer to 1MB per loop to prevent Out-Of-Memory crashes if the log file grows unexpectedly large.
+*   **[FIXED] CSP Divergence**: Refactored `webviewSidebar.ts` to use the centralized, strict Content-Security-Policy definition from `SecurityModule`.
+*   **[FIXED] Potential XSS in Visualization**: Updated `gaugeLogic.js` to safely set text content via DOM methods instead of `innerHTML`, preventing potential script injection from malicious model names.
+
+---
+
 ## 🔗 Links via Appranch Studio
 
 *   **Website**: [www.appranchstudio.com](https://www.appranchstudio.com)

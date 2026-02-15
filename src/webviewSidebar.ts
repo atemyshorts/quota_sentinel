@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import { SecurityModule } from './securityModule';
 
 export class WebviewSidebar implements vscode.WebviewViewProvider {
     public static readonly viewType = 'quota-sentinel-sidebar';
@@ -64,7 +65,7 @@ export class WebviewSidebar implements vscode.WebviewViewProvider {
         <html lang="en">
         <head>
             <meta charset="UTF-8">
-            <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src ${webview.cspSource}; script-src 'nonce-${nonce}';">
+            <meta http-equiv="Content-Security-Policy" content="${SecurityModule.getStrictCSP(this._extensionUri, nonce)}">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link href="${styleUri}" rel="stylesheet">
             <title>Quota Sentinel</title>

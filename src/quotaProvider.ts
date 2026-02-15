@@ -79,9 +79,13 @@ export class QuotaProvider {
                 return;
             }
 
-            const buffer = Buffer.alloc(sizeDiff);
+            // Security Fix: Cap read buffer to 1MB to prevent OOM
+            const MAX_READ_SIZE = 1024 * 1024; // 1MB
+            const readSize = Math.min(sizeDiff, MAX_READ_SIZE);
+
+            const buffer = Buffer.alloc(readSize);
             const fd = fs.openSync(this._logPath, 'r');
-            fs.readSync(fd, buffer, 0, sizeDiff, this._lastSize);
+            fs.readSync(fd, buffer, 0, readSize, this._lastSize);
             fs.closeSync(fd);
             this._lastSize = stats.size;
 
