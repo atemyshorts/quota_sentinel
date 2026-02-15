@@ -2,7 +2,7 @@
 
 > **A Free and Open Source extension brought to you by [Appranch Studio](https://www.appranchstudio.com).**
 
-![License](https://img.shields.io/badge/license-MIT-green)
+![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 
 **Quota Sentinel** is an ultra-secure, local-first extension designed to monitor your LLM token usage and parallel agent load in real-time. It provides a sleek, "Fortress Mode" sidebar that ensures your data never leaves your machine.
