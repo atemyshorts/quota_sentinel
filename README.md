@@ -27,6 +27,21 @@
 We believe in transparency. You can audit the source code of the running extension at any time by running the command:
 `> Antigravity Quota Sentinel: Audit Source Code`
 
+## 📦 Installation & Testing
+
+### Option 1: Quick Test (Debug Mode)
+1.  Open this folder in VS Code / Antigravity.
+2.  Press **F5** to launch a new "Extension Development Host" window.
+3.  The extension will be active in that new window.
+
+### Option 2: Sideloading (Production Mode)
+1.  Install `vsce` if you haven't: `npm install -g @vscode/vsce`
+2.  Package the extension: `vsce package`
+3.  This will create a `.vsix` file (e.g., `antigravity-quota-sentinel-1.0.0.vsix`).
+4.  Install it in your editor:
+    *   **Command Palette**: `Extensions: Install from VSIX...`
+    *   Select the generated `.vsix` file.
+
 ## 🛡️ Security Log
 
 Transparancy is key to trust. Below is a log of security audits and applied fixes.
