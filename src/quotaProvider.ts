@@ -33,6 +33,12 @@ export class QuotaProvider {
     private readonly _timezoneOffset = -6; // Guanajuato (UTC-6)
 
     constructor(private readonly _stateEmitter: vscode.EventEmitter<any>) {
+        // Listen for refresh requests from the UI
+        this._stateEmitter.event(event => {
+            if (event.type === 'refresh-request') {
+                this._broadcastUpdate();
+            }
+        });
         // Assume .gemini/logs is at the root of the workspace or user home
         // For this extension, let's assume a fixed path relative to user home for now, 
         // or discoverable via workspace.

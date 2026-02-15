@@ -42,6 +42,15 @@ We believe in transparency. You can audit the source code of the running extensi
     *   **Command Palette**: `Extensions: Install from VSIX...`
     *   Select the generated `.vsix` file.
 
+### Customizing Your Layout (Dual Window Setup)
+You will see **two** Quota Sentinel icons in your Activity Bar:
+1.  **"Quota Sentinel"** (Live Quota HUD) -> Intended for your main Editor window.
+2.  **"Agent Quota Monitor"** (Parallel Agent Load) -> Intended for your **Agent Manager** window.
+
+**To setup:**
+- Drag the **"Agent Quota Monitor"** icon from your main window's Activity Bar to your Agent Manager window's Activity Bar.
+- Each window will now have its dedicated monitor.
+
 ## 🛡️ Security Log
 
 Transparancy is key to trust. Below is a log of security audits and applied fixes.

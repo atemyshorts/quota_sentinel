@@ -45,6 +45,11 @@ export class WebviewSidebar implements vscode.WebviewViewProvider {
                     vscode.window.showErrorMessage(data.value);
                     break;
                 }
+                case 'ready': {
+                    // Trigger a refresh request
+                    this._stateEmitter.fire({ type: 'refresh-request' });
+                    break;
+                }
             }
         });
     }

@@ -63,5 +63,7 @@
     }
 
     // Initialize logic triggers
-    // We could send a 'ready' message back to extension
+    document.addEventListener('DOMContentLoaded', () => {
+        vscode.postMessage({ type: 'ready' });
+    });
 })();
