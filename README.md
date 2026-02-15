@@ -37,7 +37,7 @@ We believe in transparency. You can audit the source code of the running extensi
 ### Option 2: Sideloading (Production Mode)
 1.  Install `vsce` if you haven't: `npm install -g @vscode/vsce`
 2.  Package the extension: `vsce package`
-3.  This will create a `.vsix` file (e.g., `antigravity-quota-sentinel-1.0.0.vsix`).
+3.  This will create a `.vsix` file (e.g., `antigravity-quota-sentinel-1.1.0.vsix`).
 4.  Install it in your editor:
     *   **Command Palette**: `Extensions: Install from VSIX...`
     *   Select the generated `.vsix` file.
