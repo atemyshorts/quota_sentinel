@@ -45,6 +45,8 @@ export class QuotaProvider {
         const homeDir = process.env.HOME || process.env.USERPROFILE || '';
         this._logPath = path.join(homeDir, '.gemini', 'logs', 'antigravity.log');
 
+        console.log(`[QuotaSentinel] Looking for logs at: ${this._logPath}`);
+
         this._initializeBuckets();
         this._startWatching();
         this._checkReset(); // Check if we need to reset usage based on time
@@ -68,6 +70,7 @@ export class QuotaProvider {
 
         const stats = fs.statSync(this._logPath);
         this._lastSize = stats.size;
+        console.log(`[QuotaSentinel] Found log file. Initial size: ${this._lastSize}`);
 
         this._logWatcher = fs.watch(this._logPath, (eventType) => {
             if (eventType === 'change') {
@@ -84,6 +87,7 @@ export class QuotaProvider {
                 this._lastSize = stats.size;
                 return;
             }
+            console.log(`[QuotaSentinel] Reading ${sizeDiff} new bytes...`);
 
             // Security Fix: Cap read buffer to 1MB to prevent OOM
             const MAX_READ_SIZE = 1024 * 1024; // 1MB
@@ -116,6 +120,8 @@ export class QuotaProvider {
     private _processLogEntry(entry: any) {
         // Expected format: { "model": "claude-3-5-sonnet", "token_count": 150, "timestamp": ... }
         if (!entry.model || !entry.token_count) return;
+
+        console.log(`[QuotaSentinel] Processing: ${entry.model} used ${entry.token_count}`);
 
         for (const bucket of this._buckets.values()) {
             if (bucket.modelNames.includes(entry.model)) {

@@ -46,6 +46,7 @@ export class WebviewSidebar implements vscode.WebviewViewProvider {
                     break;
                 }
                 case 'ready': {
+                    console.log(`[QuotaSentinel] Received READY signal from Webview.`);
                     // Trigger a refresh request
                     this._stateEmitter.fire({ type: 'refresh-request' });
                     break;
@@ -56,7 +57,10 @@ export class WebviewSidebar implements vscode.WebviewViewProvider {
 
     private _updateView(data: any) {
         if (this._view) {
+            console.log(`[QuotaSentinel] Sending update to Webview: ${JSON.stringify(data).substring(0, 50)}...`);
             this._view.webview.postMessage(data);
+        } else {
+            console.warn(`[QuotaSentinel] Webview not ready to receive update.`);
         }
     }
 
