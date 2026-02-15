@@ -69,8 +69,11 @@ export class QuotaProvider {
         }
 
         const stats = fs.statSync(this._logPath);
-        this._lastSize = stats.size;
-        console.log(`[QuotaSentinel] Found log file. Initial size: ${this._lastSize}`);
+        this._lastSize = 0; // Start from beginning to read all existing content
+        console.log(`[QuotaSentinel] Found log file. Initial size: ${stats.size}`);
+
+        // Read existing content immediately
+        this._readNewLogs();
 
         this._logWatcher = fs.watch(this._logPath, (eventType) => {
             if (eventType === 'change') {

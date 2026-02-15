@@ -2,7 +2,7 @@
   "name": "antigravity-quota-sentinel",
   "displayName": "Antigravity Quota Sentinel",
   "description": "Ultra-secure, local-first LLM quota monitor with live pulse alerts and shared bucket visualization.",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "icon": "media/icons/gauge-icon.png",
   "publisher": "AppranchStudio",
   "author": {
@@ -33,12 +33,7 @@
         {
           "id": "quota-sentinel-container",
           "title": "Quota Sentinel",
-          "icon": "media/icons/gauge-icon.svg"
-        },
-        {
-          "id": "quota-sentinel-manager-container",
-          "title": "Agent Quota Monitor",
-          "icon": "media/icons/gauge-icon.svg"
+          "icon": "media/icons/gauge-icon.png"
         }
       ]
     },
@@ -49,9 +44,7 @@
           "id": "quota-sentinel-sidebar",
           "name": "Live Quota HUD",
           "visibility": "visible"
-        }
-      ],
-      "quota-sentinel-manager-container": [
+        },
         {
           "type": "webview",
           "id": "quota-sentinel-sidebar-manager",
